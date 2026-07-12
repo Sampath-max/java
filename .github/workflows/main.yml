@@ -1,19 +1,20 @@
 name:
-on:
+on: 
   push:
     branches: ["master"]
 jobs:
-  build:
+  job-build:
     runs-on: ubuntu-latest
     steps:
       - name: cloning the repository
         uses: actions/checkout@v4
       - name: installing the java
-        uses: actions/setup-java@v5.5.0
+        uses:  actions/setup-java@v5.5.0
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: compiling the source code
+      - name: compiling the source code 
         run: javac Test.java
-      - name: executing the java
+      - name: executing the source code 
         run: java Test
+    
