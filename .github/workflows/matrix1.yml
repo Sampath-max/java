@@ -1,0 +1,22 @@
+name: matrix-project
+on:
+  workflow_dispatch: 
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ "windows-latest" , "ubuntu-latest" ]
+        version: [21,17]
+    runs-on: ${{ matrix.os }}    
+    steps:
+      - name: cloning the repository
+        uses: actions/chekcout@v7.0.0
+      - name: setup java
+        uses: actions/setup-java@v5.5.0
+        with:
+          java-version: ${{ matrix.version }}
+          distribution: 'temurin'
+      - name: executing the java
+        run: javac Test.java
+      - name: generating the java project
+        run: java Test
