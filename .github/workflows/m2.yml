@@ -1,28 +1,24 @@
-name: m1-file
+name: m2-workflow
 on:
   workflow_dispatch:
-    branches:
-      - master
 jobs:
   build:
     strategy:
       matrix:
-        environment: [ "beta" , "gama" ,"alpha" ]
-        version: [21,17]
-    runs-on: ubuntu-latest
+        version: [ 21,17 ]
+        environment: [ "beta","gamma","delta" ]
+    runs-on: ubunut-latest
     steps:
       - name: cloning the repository
         uses: actions/checkout@v7.0.0
-      - name: setup java
+      - name: setup-java
         uses: actions/setup-java@v5.5.0
         with:
           java-version: ${{ matrix.version }}
           distribution: 'temurin'
       - name: Environment
-        run: echo " ${{ matrix.environment }} "
-      - name: compiling the source code
+        run: echo " ${{ matrix.environment }}
+      - name: compiling the source code 
         run: javac Test.java
       - name: executing the source code 
         run: java Test
-      - name: java version
-        run: java --version
