@@ -24,3 +24,5 @@ jobs:
         run: javac Test.java
       - name: executing the source code 
         run: java Test
+      - name: java version
+        run: java --version
