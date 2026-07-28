@@ -6,15 +6,12 @@ pipeline {
         stage('Build java project and deploy ') {
             steps {
                git 'https://github.com/Sharath-yp25/java.git'
-               sh '''javac Test.java
-                    java Test'''
             }
         }
-         stage('Build maven project and deploying ') {
+        stage('compiling the java project ') {
             steps {
-              git 'https://github.com/Sharath-yp25/mavenproject.git'
-              sh 'mvn package'
+               bat '''javac Test.java
+                   java Test'''
             }
         }
-    }
-}
+    }      
